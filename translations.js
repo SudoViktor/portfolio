@@ -34,13 +34,13 @@ const TRANSLATIONS = {
     },
     experience: {
       title: "Досвід роботи",
-      subtitle: "Комерційна розробка бекенду, робота з базами даних та інтеграція сервісів.",
+      subtitle: "Розробка та підтримка Telegram-ботів і бекенд-логіки на Python.",
       roleTitle: "Python Developer — InCust",
       period: "October 2021 – January 2023",
-      summary: "Розробка та підтримка бекенд-модулів для хмарної платформи програм лояльності та автоматизації бізнесу.",
-      b1: "Розробка та підтримка сервісів обробки транзакційних даних на Python.",
-      b2: "Проєктування та оптимізація складних SQL-запитів для вибірки, агрегації та перевірки цілісності даних.",
-      b3: "Реалізація API-інтеграцій із зовнішніми платіжними та CRM-системами, автоматизація рутинних операцій."
+      summary: "Займався розробкою Telegram-ботів, роботою з базами даних та розвитком сервісної логіки.",
+      b1: "Розробляв Telegram-ботів та нові функції на Python із використанням aiogram та asyncio.",
+      b2: "Працював із базою даних через SQLAlchemy та оптимізував запити для швидшої роботи.",
+      b3: "Створював нових ботів під задачі, підтримував існуючі та додавав потрібний функціонал."
     },
     projects: {
       title: "Проєкти та розробки",
@@ -117,13 +117,13 @@ const TRANSLATIONS = {
     },
     experience: {
       title: "Work Experience",
-      subtitle: "Commercial backend development, database optimization, and service integrations.",
+      subtitle: "Building and maintaining Telegram bots and backend logic in Python.",
       roleTitle: "Python Developer — InCust",
       period: "October 2021 – January 2023",
-      summary: "Development and maintenance of backend modules for a cloud-based loyalty and business automation platform.",
-      b1: "Developed and maintained backend services for transactional data processing in Python.",
-      b2: "Designed and optimized complex SQL queries for data retrieval, aggregation, and integrity validation.",
-      b3: "Implemented API integrations with external payment and CRM systems, automating routine business workflows."
+      summary: "Focused on Telegram bot development, database queries, and feature delivery.",
+      b1: "Built Telegram bots and new features in Python using aiogram and asyncio.",
+      b2: "Worked with the database via SQLAlchemy and optimized queries for better performance.",
+      b3: "Developed new bots for specific tasks, maintained existing ones, and shipped new functionality."
     },
     projects: {
       title: "Projects & Repositories",
