@@ -44,20 +44,12 @@ const TRANSLATIONS = {
     },
     projects: {
       title: "Проєкти та розробки",
-      subtitle: "Комерційні та пет-проєкти на Python: від продакшен-ботів до утиліт автоматизації (список доповнюється).",
-      p1Title: "Telegram Bot (Production)",
-      p1Badge: "Python • Aiogram • SQLite/PostgreSQL",
-      p1Desc: "Робочий Telegram-бот на Python із асинхронною архітектурою, обробкою команд користувачів, збереженням станів у БД та інтеграцією зовнішніх API.",
-      p1Status: "Статус: Працює в продакшені • Детальний опис та посилання будуть додані",
-      p2Title: "Проєкт #2 (Заглушка)",
-      p2Badge: "Python • FastAPI / Docker",
-      p2Desc: "Місце для опису репозиторію з GitHub: архітектура сервісу, вирішена задача, використані бібліотеки та приклади коду.",
-      p2Status: "Статус: Готується до публікації • Опис буде оновлено",
-      p3Title: "Проєкт #3 (Заглушка)",
-      p3Badge: "Python • Automation / Parsing",
-      p3Desc: "Місце для опису наступного проєкту: скрипт збору та обробки даних, робота з чергами або утиліта для автоматизації процесів.",
-      p3Status: "Статус: У процесі оформлення • Опис буде оновлено",
-      githubBtn: "Переглянути на GitHub →"
+      subtitle: "Натисни на картку, щоб відкрити повний опис проєкту, архітектуру та посилання.",
+      backBtn: "← Назад до проєктів",
+      highlightsTitle: "Ключові деталі та реалізація",
+      githubBtn: "GitHub репозиторій ↗",
+      demoBtn: "Відкрити демо ↗",
+      noImage: "Прев'ю буде додано"
     },
     education: {
       title: "Освіта",
@@ -127,20 +119,12 @@ const TRANSLATIONS = {
     },
     projects: {
       title: "Projects & Repositories",
-      subtitle: "Commercial and personal Python projects: from live Telegram bots to automation tools (to be expanded).",
-      p1Title: "Telegram Bot (Production)",
-      p1Badge: "Python • Aiogram • SQLite/PostgreSQL",
-      p1Desc: "Live Python Telegram bot featuring asynchronous architecture, user state management in a database, and external API integrations.",
-      p1Status: "Status: Live in production • Detailed case study & link coming soon",
-      p2Title: "Project #2 (Placeholder)",
-      p2Badge: "Python • FastAPI / Docker",
-      p2Desc: "Placeholder for a GitHub repository: service architecture, problem solved, core libraries used, and code snippets.",
-      p2Status: "Status: Preparing documentation • Details will be added soon",
-      p3Title: "Project #3 (Placeholder)",
-      p3Badge: "Python • Automation / Parsing",
-      p3Desc: "Placeholder for the next project: data collection and processing script, task queues, or workflow automation utility.",
-      p3Status: "Status: In progress • Details will be added soon",
-      githubBtn: "View on GitHub →"
+      subtitle: "Click any card to view the full project description, architecture details, and links.",
+      backBtn: "← Back to projects",
+      highlightsTitle: "Key Highlights & Implementation",
+      githubBtn: "GitHub Repository ↗",
+      demoBtn: "Open Demo ↗",
+      noImage: "Preview coming soon"
     },
     education: {
       title: "Education",
