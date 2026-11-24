@@ -184,7 +184,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const demoLabel = getTranslation('projects.demoBtn', lang);
     const overviewLabel = lang === 'uk' ? 'Огляд проєкту' : 'Project Overview';
     const titleText = content.fullTitle || content.title;
-    const hintText = lang === 'uk' ? 'Відкрити' : 'View';
+    const hintText = lang === 'uk' ? 'Стопка' : 'Deck';
+
+    const mediaList = window.ProjectStackPreview
+      ? window.ProjectStackPreview.getProjectMedia(project)
+      : (project.image ? [{ src: project.image }] : []);
 
     const linksHtml = [
       project.githubUrl
@@ -195,14 +199,14 @@ document.addEventListener('DOMContentLoaded', () => {
         : ''
     ].filter(Boolean).join('');
 
-    const imageHtml = project.image
+    const imageHtml = mediaList.length > 0
       ? (window.ProjectStackPreview
           ? window.ProjectStackPreview.renderStackHtml(
-              escapeHtml(project.image),
+              project,
               escapeHtml(titleText),
               escapeHtml(hintText)
             )
-          : `<img src="${escapeHtml(project.image)}" alt="${escapeHtml(titleText)}" class="project-detail-img">`)
+          : `<img src="${escapeHtml(mediaList[0].src)}" alt="${escapeHtml(titleText)}" class="project-detail-img">`)
       : '';
 
     const highlightsHtml = Array.isArray(content.highlights) && content.highlights.length > 0
@@ -237,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
 
         <div class="card">
-          <div class="project-hero-split ${project.image ? '' : 'no-image'}">
+          <div class="project-hero-split ${mediaList.length > 0 ? '' : 'no-image'}">
             ${imageHtml}
             <div class="project-overview-box">
               <span class="project-overview-label">${escapeHtml(overviewLabel)}</span>
@@ -264,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
-
+  
   // Відкриття сторінки проєкту з плавною анімацією
   function openProjectDetail(projectId, pushState = true) {
     const project = getProjectsList().find(p => p.id === projectId);

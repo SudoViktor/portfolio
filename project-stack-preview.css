@@ -1,8 +1,8 @@
-/* --- STACKED CARDS PREVIEW & LIGHTBOX MODAL --- */
+/* --- STACKED CARDS PREVIEW (НА СТОРІНЦІ ПРОЄКТУ) --- */
 .project-stack-wrap {
   position: relative;
   width: 100%;
-  height: 220px;
+  height: 224px;
   padding: 12px 18px 14px 14px;
   cursor: pointer;
   user-select: none;
@@ -22,13 +22,16 @@
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.1);
   overflow: hidden;
   transform-origin: center 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition:
     transform 0.34s var(--ease-smooth),
     box-shadow 0.34s ease,
-    border-color 0.25s ease;
+    border-color 0.25s ease,
+    opacity 0.28s ease;
 }
 
-/* Нижні картки у стопці — виразніші рамки і фон */
 .project-stack-layer.layer-back-2 {
   background: #e2e8f0;
   border-color: #94a3b8;
@@ -43,23 +46,22 @@
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
 }
 
-/* Верхня картка зі скріншотом */
 .project-stack-layer.layer-front {
   z-index: 3;
   border-color: #94a3b8;
   box-shadow: 0 12px 26px rgba(15, 23, 42, 0.16);
 }
 
-.project-stack-layer.layer-front img {
+.project-stack-layer img,
+.project-stack-layer video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
+  pointer-events: none;
 }
 
-/* Легкі декоративні лінії на задніх картках, щоб було видно, що це картки */
-.project-stack-layer.layer-back-1::before,
-.project-stack-layer.layer-back-2::before {
+.project-stack-layer.is-empty-card::before {
   content: "";
   position: absolute;
   top: 14px;
@@ -71,7 +73,22 @@
   box-shadow: 0 16px 0 rgba(100, 116, 139, 0.14);
 }
 
-/* Епічне падіння карток при відкритті сторінки проєкту */
+.psp-video-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 4;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 7px;
+  border-radius: 5px;
+  background: rgba(15, 23, 42, 0.82);
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}
+
 @keyframes stackDropIn {
   0% {
     opacity: 0;
@@ -100,19 +117,10 @@
   animation: stackDropIn 0.68s var(--ease-long-in) both;
 }
 
-.project-stack-wrap.is-dropping .layer-back-2 {
-  animation-delay: 0.02s;
-}
+.project-stack-wrap.is-dropping .layer-back-2 { animation-delay: 0.02s; }
+.project-stack-wrap.is-dropping .layer-back-1 { animation-delay: 0.09s; }
+.project-stack-wrap.is-dropping .layer-front  { animation-delay: 0.16s; }
 
-.project-stack-wrap.is-dropping .layer-back-1 {
-  animation-delay: 0.09s;
-}
-
-.project-stack-wrap.is-dropping .layer-front {
-  animation-delay: 0.16s;
-}
-
-/* Розкладання віялом при наведенні працює лише ПІСЛЯ завершення падіння */
 .project-stack-wrap:not(.is-animating):hover .layer-front {
   transform:
     translate3d(calc(var(--rest-x, 0px) - 2px), calc(var(--rest-y, 0px) - 3px), 0)
@@ -152,103 +160,314 @@
   transform: translateY(-2px);
 }
 
-/* --- MODAL / LIGHTBOX --- */
+/* --- КАРТИНКА САМА ПО СОБІ В СТОПЦІ (БЕЗ ФІКСОВАНОЇ РАМКИ) --- */
 .psp-modal {
   position: fixed;
   inset: 0;
   z-index: 300;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 16px;
   padding: 20px;
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(4px);
+  background: rgba(15, 23, 42, 0.78);
+  backdrop-filter: blur(8px);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.22s ease;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
 .psp-modal.is-open {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 
-.psp-modal-dialog {
-  position: relative;
-  max-width: min(960px, 94vw);
-  max-height: 88vh;
-  width: 100%;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: 14px;
-  padding: 16px;
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.28);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transform: scale(0.96) translateY(8px);
-  transition: transform 0.25s var(--ease-smooth);
-}
-
-.psp-modal.is-open .psp-modal-dialog {
-  transform: scale(1) translateY(0);
-}
-
-.psp-modal-header {
+.psp-floating-topbar {
+  width: min(860px, 92vw);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  z-index: 10;
+}
+
+.psp-modal-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  min-width: 0;
+}
+
+.psp-modal-counter {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #ffffff;
+  flex-shrink: 0;
 }
 
 .psp-modal-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 500;
+  color: #f8fafc;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .psp-modal-close {
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  background: var(--bg-subtle);
-  color: var(--text-primary);
-  font-size: 18px;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  font-size: 20px;
   line-height: 1;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .psp-modal-close:hover {
-  background: var(--border-color);
+  background: rgba(255, 255, 255, 0.26);
+  transform: scale(1.06);
 }
 
-.psp-modal-body {
+/* Простір для стопки без фіксованої рамки */
+.psp-deck-stage {
+  position: relative;
+  width: min(960px, 94vw);
+  height: min(68vh, 560px);
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: auto;
-  border-radius: 10px;
-  background: var(--bg-app);
-  padding: 8px;
+  overflow: visible;
 }
 
-.psp-modal-img {
-  max-width: 100%;
-  max-height: calc(88vh - 96px);
+/* Контейнер підлаштовується під розмір поточної картки */
+.psp-deck-stack {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: calc(100% - 116px);
+  max-height: 100%;
+}
+
+/* Кожна картка — без жорстких рамок і фонів, лише сама картинка/відео із заокругленням */
+.psp-stack-card {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  overflow: hidden;
+  transform-origin: center 75%;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transition:
+    transform 0.4s var(--ease-smooth),
+    opacity 0.32s ease;
+}
+
+/* Активна картка задає природний розмір стопки */
+.psp-stack-card.pos-front {
+  position: relative;
+  z-index: 4;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Задні картки розтягуються під розмір активної і нахиляються в різні боки */
+.psp-stack-card.pos-back-1 {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.psp-stack-card.pos-back-2 {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0.78;
+  pointer-events: none;
+}
+
+.psp-stack-card.pos-deep {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.psp-stack-card.no-transition {
+  transition: none !important;
+}
+
+.psp-stack-card.fly-out-next {
+  z-index: 6 !important;
+  opacity: 0 !important;
+  pointer-events: none;
+  transform: translate3d(-180px, -24px, 0) rotate(-13deg) scale(0.92) !important;
+  transition:
+    transform 0.32s var(--ease-fast-out),
+    opacity 0.26s ease !important;
+}
+
+.psp-stack-card.fly-in-start {
+  z-index: 6 !important;
+  opacity: 0 !important;
+  transform: translate3d(-170px, -22px, 0) rotate(-12deg) scale(0.93) !important;
+  transition: none !important;
+}
+
+.psp-stack-card img,
+.psp-stack-card video {
+  display: block;
   width: auto;
   height: auto;
-  object-fit: contain;
-  border-radius: 8px;
+  max-width: 100%;
+  max-height: min(68vh, 560px);
+  border-radius: 16px;
+  box-shadow: 0 22px 50px rgba(2, 6, 23, 0.55);
+}
+
+.psp-stack-card.pos-back-1 img,
+.psp-stack-card.pos-back-1 video,
+.psp-stack-card.pos-back-2 img,
+.psp-stack-card.pos-back-2 video,
+.psp-stack-card.pos-deep img,
+.psp-stack-card.pos-deep video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.psp-stack-card.pos-back-1::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: rgba(2, 6, 23, 0.18);
+  pointer-events: none;
+}
+
+.psp-stack-card.pos-back-2::after,
+.psp-stack-card.pos-deep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: rgba(2, 6, 23, 0.34);
+  pointer-events: none;
+}
+
+.psp-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 8;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(2, 6, 23, 0.35);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.psp-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.07);
+}
+
+.psp-nav-btn.prev { left: 4px; }
+.psp-nav-btn.next { right: 4px; }
+
+.psp-thumbs-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: min(860px, 92vw);
+  overflow-x: auto;
+  padding: 4px;
+  z-index: 10;
+}
+
+.psp-thumb-item {
+  position: relative;
+  min-width: 66px;
+  width: 66px;
+  height: 44px;
+  border-radius: 9px;
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  background: rgba(15, 23, 42, 0.6);
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.65;
+  transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.psp-thumb-item:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+}
+
+.psp-thumb-item.is-active {
+  opacity: 1;
+  border-color: #ffffff;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.45);
+}
+
+.psp-thumb-item img,
+.psp-thumb-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
+  pointer-events: none;
+}
+
+.psp-thumb-vid-badge {
+  position: absolute;
+  right: 4px;
+  bottom: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #fff;
 }
 
 @media (max-width: 768px) {
@@ -268,10 +487,27 @@
 
   .psp-modal {
     padding: 12px;
+    gap: 12px;
   }
 
-  .psp-modal-dialog {
-    padding: 12px;
-    border-radius: 12px;
+  .psp-deck-stage {
+    width: 96vw;
+    height: 50vh;
+  }
+
+  .psp-deck-stack {
+    max-width: calc(100% - 82px);
+    max-height: 50vh;
+  }
+
+  .psp-stack-card img,
+  .psp-stack-card video {
+    max-height: 50vh;
+  }
+
+  .psp-nav-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
   }
 }

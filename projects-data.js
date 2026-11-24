@@ -1,7 +1,14 @@
 const PROJECTS_DATA = [
   {
     id: "litebank",
-    image: "img/LiteBank.png", // або null, якщо картинки ще немає
+    image: "img/litebank/LiteBank.png", // або null, якщо картинки ще немає
+    mediaFolder: "img/litebank",
+    media: [
+      "LiteBank.png",
+      "1.jpeg",
+      "2.jpeg",
+      "3.jpeg",
+    ],
     tags: ["Python", "FastAPI", "Apache Kafka", "PostgreSQL", "Docker"],
     githubUrl: "https://github.com/SudoViktor/LiteBank",
     demoUrl: "",
