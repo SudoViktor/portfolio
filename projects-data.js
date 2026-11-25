@@ -88,5 +88,54 @@ const PROJECTS_DATA = [
       ],
       notes: "Personal project built to showcase client-server engineering: modular Flask REST APIs, transactional SQLAlchemy 2.0 persistence, JWT auth, Vanilla JS SPA architecture, and Docker deployment."
     }
+  },
+
+  {
+    id: "stock-keymaster",
+    image: "img/stock-keymaster/main.png",
+    mediaFolder: "img/stock-keymaster",
+    media: [
+        "main.png",
+        "generate.png",
+        "generate2.png",
+        "generate3.png",
+        "1.jpeg",
+        "2.jpeg",
+        "3.jpeg",
+        "4.jpeg",
+    ],
+    tags: ["HTML5", "CSS3", "Vanilla JS (ES6+)", "Google Gemini API", "Client-Side"],
+    githubUrl: "https://github.com/SudoViktor/StockKeymaster",
+    demoUrl: "https://sudoviktor.github.io/StockKeymaster/",
+    uk: {
+      title: "Stock Keymaster",
+      shortDesc: "Клієнтський веб-додаток на базі Google Gemini API для генерації метаданих (назва, опис, 49 ключових слів) для стокових фото і відео.",
+      fullTitle: "Stock Keymaster — Генератор метаданих для стокових фото та відео на базі Gemini API",
+      subtitle: "Повністю клієнтська архітектура без бекенду, витягування ключових кадрів із відео та двомовний інтерфейс (UK/EN).",
+      overview: "Легкий клієнтський веб-додаток, який використовує Google Gemini API для автоматичного створення комерційно релевантних назв, детальних описів і ключових слів для стокових фотографій та відеоматеріалів (зокрема для контриб'юторів Adobe Stock). Усі файли обробляються локально в браузері без передачі медіа на сторонній сервер.",
+      highlights: [
+        "Повністю клієнтська робота без бекенду — файли залишаються локально на пристрої користувача.",
+        "Підтримка фото та відео: автоматичне витягування ключових кадрів із відео (на 10%, 50% та 90% тривалості) для точного аналізу.",
+        "Структурована генерація: заголовок (5–10 слів), опис (2–3 речення) та рівно 49 релевантних ключових слів.",
+        "Миттєвий hover-перегляд зображень і відтворення відео прямо в таблиці, копіювання в один клік та повторні спроби при обмеженнях rate limit API.",
+        "Двомовний інтерфейс (англійська та українська) зі збереженням вибору через cookies."
+      ],
+      notes: "Проєкт створено для демонстрації навичок клієнтської інженерії на Vanilla JS (ES6+), роботи з браузерними API та інтеграції генеративного ШІ (Google Gemini API) без серверного прошарку."
+    },
+    en: {
+      title: "Stock Keymaster",
+      shortDesc: "Client-side web app powered by Google Gemini API to generate titles, descriptions, and 49 keywords for stock photos and videos.",
+      fullTitle: "Stock Keymaster — AI Metadata Generator for Stock Photos & Videos",
+      subtitle: "Zero-backend browser architecture, video keyframe extraction, and bilingual UK/EN interface.",
+      overview: "A lightweight, purely client-side web application using the Google Gemini API to generate commercially attractive titles, detailed descriptions, and relevant keywords for stock photos and videos—tailored for Adobe Stock contributors. All media files remain local in the browser without requiring a backend.",
+      highlights: [
+        "No backend required: runs entirely in the browser so your media files stay local and secure.",
+        "Photo and video support: automatically extracts video keyframes at 10%, 50%, and 90% duration for accurate metadata.",
+        "Smart generation: outputs a 5–10 word title, a 2–3 sentence description, and exactly 49 relevant keywords.",
+        "Table hover preview for images and videos, one-click clipboard copy, and resilient handling with automatic retries on API rate limits.",
+        "Bilingual UI in English and Ukrainian with preferences persisted via cookies."
+      ],
+      notes: "Built to demonstrate client-side web engineering with HTML5, CSS3, ES6+ JavaScript, browser media processing, and Google Gemini API integration with zero backend."
+    }
   }
 ];
