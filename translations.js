@@ -23,14 +23,14 @@ const TRANSLATIONS = {
       kpi1Val: "1.5+ роки",
       kpi1Sub: "Python, SQL, REST API",
       kpi2Label: "Основний фокус",
-      kpi2Val: "Backend & Bots",
+      kpi2Val: "Backend",
       kpi2Sub: "Автоматизація, парсинг, інтеграції",
       kpi3Label: "Формат роботи",
       kpi3Val: "Remote",
       kpi3Sub: "Автономне робоче місце 24/7",
       profileTitle: "Інженерний профіль",
       profileP1: "Спеціалізуюся на розробці бекенд-логіки на Python, проєктуванні взаємодії з реляційними базами даних та створенні надійних сервісів автоматизації. Маю досвід побудови REST API, парсингу даних та інтеграції сторонніх сервісів у продакшен-середовищі.",
-      profileP2: "Підтримую власні пет-проєкти та продакшен Telegram-бота на Python. Орієнтуюся на чистий, підтримуваний код, роботу в Linux-середовищі та швидке вирішення прикладних технічних задач."
+      profileP2: "Орієнтуюся на чистий, підтримуваний код, роботу в Linux-середовищі та швидке вирішення прикладних технічних задач."
     },
     experience: {
       title: "Досвід роботи",
@@ -98,14 +98,14 @@ const TRANSLATIONS = {
       kpi1Val: "1.5+ Years",
       kpi1Sub: "Python, SQL, REST API",
       kpi2Label: "Core Focus",
-      kpi2Val: "Backend & Bots",
+      kpi2Val: "Backend",
       kpi2Sub: "Automation, scraping, integrations",
       kpi3Label: "Work Format",
       kpi3Val: "Remote",
       kpi3Sub: "Autonomous 24/7 workstation",
       profileTitle: "Engineering Profile",
       profileP1: "I specialize in Python backend development, relational database interactions, and reliable automation services. Experienced in building REST APIs, data pipelines, and third-party service integrations in production environments.",
-      profileP2: "Currently maintaining pet projects and a live production Telegram bot built with Python. Focused on clean, maintainable code, Linux-based workflows, and pragmatic problem-solving."
+      profileP2: "Focused on clean, maintainable code, Linux-based workflows, and pragmatic problem-solving."
     },
     experience: {
       title: "Work Experience",
