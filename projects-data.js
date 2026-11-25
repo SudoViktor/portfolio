@@ -5,9 +5,11 @@ const PROJECTS_DATA = [
     mediaFolder: "img/litebank",
     media: [
       "LiteBank.png",
-      "1.jpeg",
-      "2.jpeg",
-      "3.jpeg",
+      "Login.png",
+      "Menu.jpg",
+      "Transactions.png",
+      "CardSettings.png",
+      "Cashier.png",
     ],
     tags: ["Python", "FastAPI", "Apache Kafka", "PostgreSQL", "Docker"],
     githubUrl: "https://github.com/SudoViktor/LiteBank",
@@ -42,67 +44,49 @@ const PROJECTS_DATA = [
     }
   },
   {
-    id: "telegram-bot",
-    image: null,
-    tags: ["Python", "aiogram", "asyncio", "SQLAlchemy", "SQLite"],
-    githubUrl: "",
+    id: "orderflow",
+    image: "img/orderflow/Orders.png",
+    mediaFolder: "img/orderflow",
+    media: [
+        "Products.png",
+        "Clients.png",
+        "Orders.png",
+        "OrderDetails.png",
+        "CreateNewOrder.png",
+        "Preview.mp4",
+    ],
+    tags: ["Python", "Flask", "SQLAlchemy 2.0", "JWT", "Vanilla JS", "Docker"],
+    githubUrl: "https://github.com/SudoViktor/OrderFlow",
     demoUrl: "",
     uk: {
-      title: "Telegram Bot (Production)",
-      shortDesc: "Асинхронний Telegram-бот на Python із роботою в продакшені, станами користувачів та базою даних.",
-      fullTitle: "Telegram Bot — Робочий бот у продакшені",
-      subtitle: "Асинхронна логіка на aiogram + asyncio та збереження даних через SQLAlchemy.",
-      overview: "Тут буде повний опис твого робочого бота: які задачі він закриває, як влаштовані сценарії, робота з БД, зовнішні інтеграції та деплой.",
+      title: "OrderFlow Terminal System",
+      shortDesc: "CRM/ERP система для автоматизації бізнес-процесів (замовлення, клієнти, інвентар) на Flask та SPA-фронтенді.",
+      fullTitle: "OrderFlow Terminal System — CRM/ERP для автоматизації бізнес-процесів",
+      subtitle: "Клієнт-серверна архітектура, REST API на Flask, SQLAlchemy 2.0 та швидкий термінальний SPA-інтерфейс.",
+      overview: "CRM/ERP система для управління замовленнями, клієнтами та інвентарем, побудована за архітектурою Client-Server. Бекенд на Flask відповідає за цілісність даних, транзакції та безпеку, а фронтенд на Vanilla JS/CSS реалізований як SPA з термінальним інтерфейсом. Проєкт створено для демонстрації практичних навичок проєктування REST API, роботи з реляційними БД та побудови SPA-клієнта без сторонніх фреймворків.",
       highlights: [
-        "Асинхронна обробка запитів та сценаріїв користувачів.",
-        "Робота з БД через SQLAlchemy та оптимізація частих запитів.",
-        "Стабільна робота в продакшен-середовищі."
+        "RESTful API на Flask із модульними Blueprints та серверною пагінацією (db.paginate) для великих вибірок.",
+        "SQLAlchemy 2.0 ORM із підтримкою транзакційності та відкатом змін (db.session.rollback).",
+        "JWT-автентифікація (Flask-JWT-Extended) та хешування паролів через Werkzeug.",
+        "SPA-фронтенд на Vanilla JS/CSS з асинхронними fetch-запитами, централізованою обробкою помилок (401 Unauthorized, токени) та адаптивною версткою (Flexbox/Grid).",
+        "Швидкий запуск через Docker Compose на http://localhost:8080/."
       ],
-      notes: "Чернетка картки — деталі та посилання можна доповнити в будь-який момент у projects-data.js."
+      notes: "Пет-проєкт для демонстрації навичок розробки клієнт-серверних систем: модульного REST API на Flask, транзакційної роботи з БД через SQLAlchemy 2.0, JWT-безпеки, Vanilla JS SPA та контейнеризації в Docker."
     },
     en: {
-      title: "Telegram Bot (Production)",
-      shortDesc: "Asynchronous Python Telegram bot running in production with user state handling and database storage.",
-      fullTitle: "Telegram Bot — Production Bot",
-      subtitle: "Asynchronous workflows with aiogram + asyncio and database persistence via SQLAlchemy.",
-      overview: "Full description of your live bot will go here: core workflows, bot commands/states, database schema, integrations, and deployment setup.",
+      title: "OrderFlow Terminal System",
+      shortDesc: "CRM/ERP system for business process automation (orders, clients, inventory) with Flask API and Vanilla JS SPA.",
+      fullTitle: "OrderFlow Terminal System — Business Process CRM/ERP",
+      subtitle: "Client-Server architecture, modular Flask REST API, SQLAlchemy 2.0, and a terminal-style SPA UI.",
+      overview: "A CRM/ERP system for managing orders, clients, and inventory following a Client-Server architecture. The Flask backend handles data integrity, transactions, and authentication, while the Vanilla JS/CSS frontend delivers a responsive terminal-style SPA. Built to demonstrate practical skills in REST API design, transactional database workflows, and framework-free SPA development.",
       highlights: [
-        "Asynchronous handling of user interactions and flows.",
-        "Database access via SQLAlchemy with query optimization.",
-        "Running in a live production environment."
+        "Modular Flask RESTful API using Blueprints and server-side pagination (db.paginate) for larger datasets.",
+        "SQLAlchemy 2.0 ORM with transaction management and rollback support (db.session.rollback).",
+        "JWT authentication via Flask-JWT-Extended and password hashing with Werkzeug.",
+        "Framework-free SPA frontend in Vanilla JS/CSS with async fetch calls, centralized error handling (401 Unauthorized, tokens), and responsive Flexbox/Grid UI.",
+        "Containerized setup via Docker Compose accessible at http://localhost:8080/."
       ],
-      notes: "Draft entry — feel free to expand details and links anytime in projects-data.js."
-    }
-  },
-  {
-    id: "project-template",
-    image: null,
-    tags: ["Python", "FastAPI", "Docker"],
-    githubUrl: "",
-    demoUrl: "",
-    uk: {
-      title: "Новий проєкт (Шаблон)",
-      shortDesc: "Короткий опис картки: що робить сервіс або утиліта і яку задачу вирішує.",
-      fullTitle: "Новий проєкт — Повна назва",
-      subtitle: "Короткий підзаголовок для сторінки деталей.",
-      overview: "Детальний опис проєкту, архітектурні рішення та як запустити локально.",
-      highlights: [
-        "Ключова можливість або технічне рішення №1.",
-        "Ключова можливість або технічне рішення №2."
-      ],
-      notes: "Скопіюй цей об'єкт у PROJECTS_DATA, щоб швидко додати ще один проєкт."
-    },
-    en: {
-      title: "New Project (Template)",
-      shortDesc: "Short card summary: what the service or utility does and what problem it solves.",
-      fullTitle: "New Project — Full Title",
-      subtitle: "Short subtitle for the project details page.",
-      overview: "Detailed project overview, architecture choices, and local setup instructions.",
-      highlights: [
-        "Key feature or technical decision #1.",
-        "Key feature or technical decision #2."
-      ],
-      notes: "Duplicate this object inside PROJECTS_DATA to add another project quickly."
+      notes: "Personal project built to showcase client-server engineering: modular Flask REST APIs, transactional SQLAlchemy 2.0 persistence, JWT auth, Vanilla JS SPA architecture, and Docker deployment."
     }
   }
 ];
