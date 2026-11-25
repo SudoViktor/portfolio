@@ -950,13 +950,16 @@ body {
   }
 }
 
-.card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 20px;
-  min-width: 0;
-  max-width: 100%;
-  overflow: visible;
-  overflow-wrap: anywhere;
+/* --- RESUME PAGE --- */
+.resume-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.resume-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }

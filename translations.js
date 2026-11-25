@@ -71,7 +71,23 @@ const TRANSLATIONS = {
       tgSub: "Найшвидший спосіб зв'язку",
       ghSub: "Репозиторії та приклади коду",
       mailSub: "Для офферів та офіційних запитів"
-    }
+    },
+    nav: {
+      about: "Про мене",
+      experience: "Досвід",
+      projects: "Проєкти",
+      education: "Освіта",
+      stack: "Стек",
+      resume: "Резюме",
+      contacts: "Контакти"
+    },
+    resume: {
+      title: "Завантажити резюме",
+      ukTitle: "Українська версія (UA)",
+      enTitle: "Англійська версія (EN)",
+      downloadBtn: "Завантажити PDF ↓",
+      previewBtn: "Відкрити у браузері ↗"
+    },
   },
 
   en: {
@@ -146,6 +162,22 @@ const TRANSLATIONS = {
       tgSub: "Fastest way to reach me",
       ghSub: "Repositories and code samples",
       mailSub: "For job offers and official inquiries"
-    }
+    },
+    nav: {
+      about: "About Me",
+      experience: "Experience",
+      projects: "Projects",
+      education: "Education",
+      stack: "Tech Stack",
+      resume: "Resume",
+      contacts: "Contacts"
+    },
+    resume: {
+      title: "Download Resume",
+      ukTitle: "Ukrainian Version (UA)",
+      enTitle: "English Version (EN)",
+      downloadBtn: "Download PDF ↓",
+      previewBtn: "Open in Browser ↗"
+    },
   }
 };
