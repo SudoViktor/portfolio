@@ -44,6 +44,44 @@ const PROJECTS_DATA = [
     }
   },
   {
+    id: "mirage",
+    image: "img/mirage/5.png",
+    mediaFolder: "img/mirage",
+    media: ["1.png", "2.png", "3.png", "4.png", "5.png"],
+    tags: ["macOS", "Swift", "Telegram User API", "MTProto", "Filesystem", "Gemini AI"],
+    githubUrl: "https://github.com/SudoViktor/Mirage",
+    demoUrl: "https://github.com/SudoViktor/Mirage/releases/tag/Mirage",
+    uk: {
+      title: "Mirage",
+      shortDesc: "Утиліта для macOS, яка монтує хмарне сховище Telegram як звичайний диск у Finder через Telegram User API.",
+      fullTitle: "Mirage — Монтування хмари Telegram як диска у Finder для macOS",
+      subtitle: "Прошарок між викликами файлової системи macOS та протоколом MTProto через Telegram User API.",
+      overview: "Утиліта для macOS, яка перетворює хмарне сховище Telegram на диск у штатному Finder. Замість ручного завантаження і скачування файлів через месенджер можна працювати з ними як зі звичайною файловою системою чи зовнішнім томом. Всю логіку взаємодії, роботу з Telegram User API та принципи поведінки файлової системи я продумав сам, а реалізацію на Swift зібрав у зв'язці з Gemini.",
+      highlights: [
+        "Інтеграція з macOS Finder: перегляд, організація та робота з файлами у звичному середовищі Finder.",
+        "Telegram User API замість Bot API — без жорстких обмежень ботів і з прямим доступом до акаунту.",
+        "Звичні операції з файлами: drag-and-drop, копіювання, переміщення та видалення без виходу з робочого процесу.",
+        "Прошарок перекладу між викликами файлової системи macOS і MTProto із синхронізацією стану директорій."
+      ],
+      notes: "Проєкт створено на базі власного розуміння архітектури, можливостей Telegram User API та роботи файлових систем — реалізований на Swift за допомогою Gemini без глибокого попереднього досвіду у Swift."
+    },
+    en: {
+      title: "Mirage",
+      shortDesc: "macOS utility that mounts Telegram cloud storage as a native drive in Finder via the Telegram User API.",
+      fullTitle: "Mirage — Telegram Cloud Drive in macOS Finder",
+      subtitle: "Translation layer between macOS file system calls and Telegram MTProto using the User API.",
+      overview: "A macOS utility that bridges Telegram cloud storage and the macOS file system so you can manage files directly in Finder like a standard drive or cloud volume. I designed the core architecture, Telegram User API workflow, and file system behavior myself, using Gemini to help implement it in Swift.",
+      highlights: [
+        "Native Finder integration for browsing, organizing, and managing Telegram-stored files.",
+        "Uses the Telegram User API rather than Bot API to avoid standard bot file limits.",
+        "Supports familiar file operations like drag-and-drop, copy, move, and delete.",
+        "Maps macOS file system calls to MTProto requests while keeping directory views synced."
+      ],
+      notes: "Built around my own system design, knowledge of the Telegram User API, and file system concepts, implemented in Swift with Gemini despite limited prior Swift experience."
+    }
+  },
+  
+  {
     id: "orderflow",
     image: "img/orderflow/Orders.png",
     mediaFolder: "img/orderflow",
